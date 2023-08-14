@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.42.168.114:3306/recruitment?useSSL=false&useServerPrepStmts=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8&autoReconnect=true
+    username: wanglei
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    #  hikari配置说明:
+    hikari:
+      minimum-idle: 2  #  最小空闲连接数量
+      maximum-pool-size: 10  #  连接池最大连接数，默认是10
+      max-lifetime: 600000  #  空闲连接存活最大时间，默认600000（10分钟）
+      connection-timeout: 30000  #  数据库连接超时时间,默认30秒，即30000
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  mvc:
+    static-path-pattern: /1/**
+server:
+  port: 50000
+  max-http-header-size: 8192
+#  ssl:
+#    key-store-password: gea5p331hv
+##    key-store=classpath:jxnckj.cn.jks
+#    key-store-type: JKS
+#    key-store: classpath:jxnckj.cn.jks
+
+
+#  开启MP的日志 输出到控制台 非必要不开启  //192.168.228.1
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# RocketMQ 相关配置
+#rocketmq:
+#  # 指定 nameServer
+#  name-server: 127.0.0.1:9876
+#  # Producer 生产者
+#  producer:
+#    group: Hr-User  # 指定发送者组名
+#    send-message-timeout: 3000 # 发送消息超时时间，单位：毫秒。默认为 3000 。
+#    compress-message-body-threshold: 4096 # 消息压缩阀值，当消息体的大小超过该阀值后，进行消息压缩。默认为 4 * 1024B
+#    max-message-size: 4194304 # 消息体的最大允许大小。。默认为 4 * 1024 * 1024B
+#    retry-times-when-send-failed: 2 # 同步发送消息时，失败重试次数。默认为 2 次。
+#    retry-times-when-send-async-failed: 2 # 异步发送消息时，失败重试次数。默认为 2 次。
+#    retry-next-server: false # 发送消息给 Broker 时，如果发送失败，是否重试另外一台 Broker 。默认为 false
